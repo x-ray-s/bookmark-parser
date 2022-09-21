@@ -19,7 +19,7 @@ export function folderNode(tree) {
             case 'a':
                 if (!folderItem) {
                     items.push({
-                        title: node.firstChild?.textContent,
+                        title: node.querySelector('span').innerHTML,
                         type: 'bookmark',
                         url: node.getAttribute('href'),
                         icon: node.getAttribute('icon'),
@@ -49,7 +49,12 @@ export function bookmarkParser(bookmark_file) {
         .replace(/<H1>[^>]+>/gi, '')
         .replace(/<DL><p>/gi, '<div class="folder">')
         .replace(/<DT>[^>]+>(.+)<\/H3>/gi, '<h5>$1</h5>')
-        .replace(/<DT><A([^>]+)>(.+)<\/A>/gi, '<a$1>$2</a>')
+        .replace(/<DT><A([^>]+)>(.+)<\/A>/gi, (search, m1, m2) => {
+            const icon = m1.match(/(?<=icon\=")[^"]+/gi)
+            return `<a target="_blank" ${m1}><i style="background-image:url(${icon})">${
+                icon ? '' : '🔖'
+            }</i><span>${m2}</span></a>`
+        })
         .replace(/<\/DL><p>/gi, '</div>')
 }
 

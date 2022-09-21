@@ -54,8 +54,6 @@ document.getElementById('import').addEventListener('click', async () => {
     const dom = domParser(bookmarkParser(contents))
     const fold = dom.body.querySelector('.folder')
     html = fold.innerHTML
-        .replace(/icon="([^"]+)"/gi, 'icon="$1" style="--bg: url($1)"')
-        .replace(/<a/gi, '<a target="_blank"')
     document.querySelector('#dom').innerHTML = html
     data = folderNode(fold)
 
@@ -85,10 +83,11 @@ document.getElementById('download-json').addEventListener('click', async () => {
     const handle = await window.showSaveFilePicker(options)
     const writable = await handle.createWritable()
     // Write the contents of the file to the stream.
+    const { json } = editor.get()
     await writable.write({
         type: 'write',
         position: 0,
-        data: JSON.stringify(data),
+        data: JSON.stringify(json[0]),
     })
     // Close the file and write the contents to disk.
     await writable.close()
@@ -123,7 +122,7 @@ document.getElementById('download-html').addEventListener('click', async () => {
         <style>.container {max-width: 960px; margin: 0 auto;}</style>
     </head>
     <body>
-    <div id="dom" class="container">${html}</div>
+    <div id="dom" class="container theme-2">${html}</div>
         
     </body>
     </html>`

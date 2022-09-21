@@ -4,7 +4,9 @@ name: Deploy vite with GitHub Pages dependencies preinstalled
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ['main']
+    paths-ignore:
+      - '**.md'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,7 +19,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -38,6 +40,7 @@ jobs:
           npm i pnpm -g
           pnpm i
           npm run build
+          cp example/bookmark-export.html ./dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
