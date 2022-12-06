@@ -5,6 +5,8 @@ A chrome bookmark parser, support export as `html` and `json`. [The online examp
 # How to use
 
 1. Export the bookmark file from Chrome, it will be like `bookmarks_2022_9_20.html`.
-2. Import the file from [https://x-ray-s.github.io/bookmark-parser/]()
-3. You will get a json data and a preview html.
-4. Download html, and upload it in your static server.
+2. Clone repos.
+3. npm i && npm run dev
+4. Import the file
+5. You will get a json data and a preview html.
+6. Download html, and upload it in your static server.
