@@ -37,8 +37,7 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: |
-          npm i pnpm -g
-          pnpm i
+          npm i
           npm run build
           cp example/bookmark-export.html ./dist
       - name: Upload artifact
