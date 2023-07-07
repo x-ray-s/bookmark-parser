@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link id="style" rel="stylesheet" href="theme.css" />
+    </head>
+    <body>
+        <div class="container mx-auto my-4">
+            <div>
+                <button id="import" class="btn">import</button>
+            </div>
+
+            <div class="my-4 hidden" id="step-2">
+                <div id="jsoneditor" class="my-4"></div>
+                <button id="review" class="btn">review</button>
+                <button id="download-json" class="btn">download json</button>
+                <button id="download-html" class="btn">download html</button>
+            </div>
+            <div id="dom" class="hidden theme-2"></div>
+        </div>
+
+        <script type="module" src="/src/main.js"></script>
+    </body>
+</html>
