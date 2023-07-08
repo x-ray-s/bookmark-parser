@@ -82,4 +82,12 @@
 
 .theme-2 h5 {
     margin: 12px 0;
+    cursor: pointer;
+}
+
+.folder.open > * {
+    display: none !important;
+}
+.folder.open > h5 {
+    display: block !important;
 }

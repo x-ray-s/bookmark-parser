@@ -67,10 +67,11 @@ document.getElementById('import').addEventListener('click', async () => {
     document.getElementById('step-2').classList.remove('hidden')
 })
 
-document.getElementById('review').addEventListener('click', () => {
+document.getElementById('review').addEventListener('click', async () => {
     const { json } = editor.get()
     document.querySelector('#dom').innerHTML = json2bookmark(json)
     $dom.classList.toggle('hidden')
+    await import('./index.js')
 })
 
 document.getElementById('download-json').addEventListener('click', async () => {
@@ -130,7 +131,16 @@ document.getElementById('download-html').addEventListener('click', async () => {
     <div id="dom" class="container theme-2">${
         document.querySelector('#dom').innerHTML
     }</div>
-        
+        <script>
+        const $title = document.querySelectorAll('.folder > h5')
+
+        Object.values($title).forEach((item) => {
+            item.addEventListener('click', (e) => {
+                item.parentNode.classList.toggle('open')
+            })
+        })
+
+        </script>
     </body>
     </html>`
     await writable.write({
